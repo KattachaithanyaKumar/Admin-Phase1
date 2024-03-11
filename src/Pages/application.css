@@ -1,0 +1,107 @@
+.application {
+  /* background-color: red; */
+  display: flex;
+  flex-direction: column;
+  margin: 5%;
+}
+
+.split {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.userData {
+  margin-top: 3%;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 30px;
+}
+
+.left {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.left > input {
+  padding: 14px;
+  border-radius: 12px;
+  background-color: rgb(233, 233, 233);
+}
+
+.right {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 10px;
+}
+
+.right > input {
+  border-radius: 12px;
+  background-color: rgb(233, 233, 233);
+  padding: 14px;
+}
+
+.application-list {
+  margin-top: 3%;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.application-list > input,
+.application-list > textarea {
+  background-color: rgb(233, 233, 233);
+  width: 100%;
+  padding: 30px;
+  border-radius: 12px;
+}
+
+.options {
+  width: 100%;
+  display: flex;
+  justify-content: space-around;
+  margin-top: 5%;
+}
+
+.options > button {
+  padding: 14px 30px;
+  border-radius: 12px;
+  border: none;
+  outline: none;
+  cursor: pointer;
+}
+
+.approve {
+  background-color: #44eb7c;
+}
+
+.reject {
+  background-color: #fc7272;
+}
+
+@media only screen and (max-width: 768px) {
+  .userData {
+    grid-template-columns: 1fr;
+  }
+
+  .application-list > input,
+  .application-list > textarea {
+    width: 95%;
+    padding: 10px;
+  }
+}
+
+@media only screen and (max-width: 425px) {
+  .userData {
+    gap: 10px;
+  }
+  .left > input,
+  .right > input {
+    width: 90%;
+  }
+  .right {
+    grid-template-columns: 1fr;
+  }
+}

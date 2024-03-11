@@ -1,0 +1,13 @@
+.applications {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  margin-top: 30px;
+  gap: 30px;
+  margin-right: 30px;
+}
+
+@media only screen and (max-width: 768px) {
+  .applications {
+    grid-template-columns: 1fr;
+  }
+}
