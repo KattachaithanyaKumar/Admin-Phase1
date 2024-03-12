@@ -29,6 +29,7 @@
   padding: 14px;
   border-radius: 12px;
   background-color: rgb(233, 233, 233);
+  border: none;
 }
 
 .right {
@@ -41,6 +42,7 @@
   border-radius: 12px;
   background-color: rgb(233, 233, 233);
   padding: 14px;
+  border: none;
 }
 
 .application-list {
@@ -53,20 +55,23 @@
 .application-list > input,
 .application-list > textarea {
   background-color: rgb(233, 233, 233);
-  width: 100%;
+  /* width: 100%; */
   padding: 30px;
   border-radius: 12px;
+  border: none;
 }
 
 .options {
-  width: 100%;
+  /* width: 100%; */
   display: flex;
-  justify-content: space-around;
+  justify-content: space-between;
   margin-top: 5%;
+  gap: 5%;
 }
 
 .options > button {
   padding: 14px 30px;
+  width: 100%;
   border-radius: 12px;
   border: none;
   outline: none;
