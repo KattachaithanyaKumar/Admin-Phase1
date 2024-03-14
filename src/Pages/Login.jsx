@@ -12,7 +12,7 @@ const Login = () => {
 
   const handleLogin = () => {
     console.log(email, password);
-    if (email == "Flexiverbrisbane@gmail.com" && password == "Abhiruth11!") {
+    if (email == "flexiverbrisbane@gmail.com" && password == "Abhiruth11!") {
       navigate("/dashboard");
     } else {
       alert("Invalid email or password");

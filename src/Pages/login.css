@@ -24,7 +24,7 @@
   gap: 20px;
 }
 
-.login-inputs > input {
+.login-inputs>input {
   padding: 10px;
   width: 12vw;
   border-radius: 12px;
@@ -33,7 +33,7 @@
   background-color: rgb(238, 238, 238);
 }
 
-.login-inputs > button {
+.login-inputs>button {
   background-color: #d69f29;
   border: none;
   outline: none;
@@ -43,7 +43,7 @@
   cursor: pointer;
 }
 
-.login-inputs > button:hover {
+.login-inputs>button:hover {
   box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
 }
 
@@ -51,10 +51,12 @@
   .login-box {
     width: 80%;
   }
-  .login-inputs > input {
+
+  .login-inputs>input {
     width: auto;
   }
-  .login-box > img {
+
+  .login-box>img {
     width: 50%;
     margin: 0 auto;
   }

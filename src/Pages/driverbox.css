@@ -2,11 +2,9 @@
   display: grid;
   grid-template-columns: 1fr 1fr;
   background: rgb(255, 255, 255);
-  background: linear-gradient(
-    90deg,
-    rgba(255, 255, 255, 1) 0%,
-    rgba(214, 159, 41, 1) 100%
-  );
+  background: linear-gradient(90deg,
+      rgba(255, 255, 255, 1) 0%,
+      rgba(214, 159, 41, 1) 100%);
   border-radius: 24px;
   box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
   border: 1px solid #d69f29;
@@ -25,7 +23,7 @@
   padding-left: 30px;
 }
 
-.driverBox-right > img {
+.driverBox-right>img {
   width: 100%;
 }
 
@@ -43,9 +41,11 @@
     margin: 1%;
     font-size: 0.9rem;
   }
+
   .driverBox-left {
     padding-left: 0;
   }
+
   .driverBox-right {
     display: none;
   }
