@@ -1,9 +1,11 @@
 import React, { useEffect, useState } from "react";
 import "./application.css";
-
+import Dropdown from 'react-bootstrap/Dropdown';
 import Nav from "./Nav";
 import { useParams } from "react-router-dom";
 import { createClient } from "@supabase/supabase-js";
+// import bootstrap css
+import 'bootstrap/dist/css/bootstrap.min.css';
 
 const supabase = createClient(
   "https://tnfeykqptcbbabeuwwxn.supabase.co",
@@ -15,7 +17,7 @@ const Application = () => {
   const { id } = useParams();
   const [loading, setLoading] = useState(false);
   const [showRejectOptions, setShowRejectOptions] = useState(false);
-  const [rejectReason, setRejectReason] = useState('');
+  var rejectReason = ["Driver is not available", "Driver is not verified", "Driver is not approved", "Driver is not good"];
 
   const getData = async () => {
     try {
@@ -47,7 +49,6 @@ const Application = () => {
   return (
     <div>
       <Nav />
-
       <div className="application">
         <div className="split">
           <h1>{data?.firstName + " " + data?.lastName}</h1>
@@ -124,7 +125,7 @@ const Application = () => {
                 isVerified: true,
                 rejectionReason: null,
               }
-            ).eq('id', id);
+            ).eq('driverId', id);
             console.log(response);
             if (response.status === 204) {
               alert('Driver Verified');
@@ -134,44 +135,52 @@ const Application = () => {
             setLoading(true);
             getData();
           }}>Approve</button>
-          <button className="reject" onClick={async () => {
-            if (showRejectOptions) {
-              setShowRejectOptions(false);
-            } else {
-              setShowRejectOptions(true);
-            }
-          }}>Reject</button>
+          <Dropdown>
+            <Dropdown.Toggle style={{
+              width: "100%",
+              padding: "14px 30px",
+              borderRadius: " 12px",
+              border: "none",
+              outline: "none",
+              cursor: "pointer",
+              backgroundColor: "#fc7272",
+              color: "black",
+            }} id="dropdown-basic" >
+              Reject
+            </Dropdown.Toggle>
+            <Dropdown.Menu style={{
+              width: "100%",
+              padding: "14px 30px",
+              borderRadius: "12px",
+              cursor: "pointer",
+              color: "black",
+            }}>
+              {
+                rejectReason.map((reason, index) => {
+                  return <Dropdown.Item onClick={async (e) => {
+                    if (data.isVerified === false) {
+                      return alert('Driver already rejected');
+                    }
+                    const response = await supabase.from('DriverDetails').update(
+                      {
+                        isVerified: false,
+                        rejectionReason: reason,
+                      }
+                    ).eq('driverId', id);
+                    console.log(response);
+                    if (response.status === 204) {
+                      alert('Driver Rejected');
+                    } else {
+                      alert('Error Rejecting Driver');
+                    }
+                    setLoading(true);
+                    getData();
+                  }} key={index} >{reason}</Dropdown.Item>
+                })
+              }
+            </Dropdown.Menu>
+          </Dropdown>
         </div>
-        {
-          showRejectOptions && (
-            <div className="rejectOptionsContainer">
-              <br />
-              <h3>Reason for Rejection</h3>
-              <input type="text" placeholder="Reason for Rejection" onChange={(e) => {
-                setRejectReason(e.target.value);
-              }} />
-              <button id="rejectOptions" onClick={async () => {
-                if (data.isVerified === false) {
-                  return alert('Driver already rejected');
-                }
-                const response = await supabase.from('DriverDetails').update(
-                  {
-                    isVerified: false,
-                    rejectionReason: rejectReason,
-                  }
-                ).eq('id', id);
-                console.log(response);
-                if (response.status === 204) {
-                  alert('Driver Rejected');
-                } else {
-                  alert('Error Rejecting Driver');
-                }
-                setLoading(true);
-                getData();
-              }}>Reject</button>
-            </div>
-          )
-        }
       </div>
     </div>
   );

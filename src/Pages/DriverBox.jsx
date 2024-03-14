@@ -14,11 +14,15 @@ const DriverBox = ({ driver }) => {
           <div className="approved">
             <p>Approved</p>
           </div>
-        ) : (
+        ) : driver.isVerified === false ? (
           <div className="progress">
-            <p>In Review</p>
+            <p>Rejected</p>
           </div>
-        )}
+        ) : <div>
+          <div className="progress">
+            <p>Waiting </p>
+          </div>
+        </div>}
       </div>
       <div className="driverBox-right">
         <img src={truck} alt="" />
