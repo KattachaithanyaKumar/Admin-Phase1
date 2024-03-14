@@ -25,7 +25,7 @@
   gap: 10px;
 }
 
-.left > input {
+.left>input {
   padding: 14px;
   border-radius: 12px;
   background-color: rgb(233, 233, 233);
@@ -38,7 +38,7 @@
   gap: 10px;
 }
 
-.right > input {
+.right>input {
   border-radius: 12px;
   background-color: rgb(233, 233, 233);
   padding: 14px;
@@ -52,8 +52,8 @@
   gap: 20px;
 }
 
-.application-list > input,
-.application-list > textarea {
+.application-list>input,
+.application-list>textarea {
   background-color: rgb(233, 233, 233);
   /* width: 100%; */
   padding: 30px;
@@ -69,7 +69,7 @@
   gap: 5%;
 }
 
-.options > button {
+.options>button {
   padding: 14px 30px;
   width: 100%;
   border-radius: 12px;
@@ -86,13 +86,20 @@
   background-color: #fc7272;
 }
 
+.rejectOptionsContainer {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+
+}
+
 @media only screen and (max-width: 768px) {
   .userData {
     grid-template-columns: 1fr;
   }
 
-  .application-list > input,
-  .application-list > textarea {
+  .application-list>input,
+  .application-list>textarea {
     width: 95%;
     padding: 10px;
   }
@@ -102,10 +109,12 @@
   .userData {
     gap: 10px;
   }
-  .left > input,
-  .right > input {
+
+  .left>input,
+  .right>input {
     width: 90%;
   }
+
   .right {
     grid-template-columns: 1fr;
   }

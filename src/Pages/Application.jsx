@@ -13,13 +13,16 @@ const supabase = createClient(
 const Application = () => {
   const [data, setData] = useState([]);
   const { id } = useParams();
+  const [loading, setLoading] = useState(false);
+  const [showRejectOptions, setShowRejectOptions] = useState(false);
+  const [rejectReason, setRejectReason] = useState('');
 
   const getData = async () => {
     try {
       const { data, error } = await supabase
         .from("DriverDetails")
         .select("*")
-        .eq("id", id)
+        .eq("driverId", id)
         .single();
 
       if (data) {
@@ -50,6 +53,7 @@ const Application = () => {
           <h1>{data?.firstName + " " + data?.lastName}</h1>
           <p>ABN Number: {data?.aBNNo}</p>
         </div>
+        Driver Id: {data?.driverId}
 
         <div className="userData">
           <div className="left">
@@ -111,9 +115,63 @@ const Application = () => {
         </div>
 
         <div className="options">
-          <button className="approve">Approve</button>
-          <button className="reject">Reject</button>
+          <button className="approve" onClick={async () => {
+            if (data.isVerified === true) {
+              return alert('Driver already verified');
+            }
+            const response = await supabase.from('DriverDetails').update(
+              {
+                isVerified: true,
+                rejectionReason: null,
+              }
+            ).eq('id', id);
+            console.log(response);
+            if (response.status === 204) {
+              alert('Driver Verified');
+            } else {
+              alert('Error Verifying Driver');
+            }
+            setLoading(true);
+            getData();
+          }}>Approve</button>
+          <button className="reject" onClick={async () => {
+            if (showRejectOptions) {
+              setShowRejectOptions(false);
+            } else {
+              setShowRejectOptions(true);
+            }
+          }}>Reject</button>
         </div>
+        {
+          showRejectOptions && (
+            <div className="rejectOptionsContainer">
+              <br />
+              <h3>Reason for Rejection</h3>
+              <input type="text" placeholder="Reason for Rejection" onChange={(e) => {
+                setRejectReason(e.target.value);
+              }} />
+              <button id="rejectOptions" onClick={async () => {
+                if (data.isVerified === false) {
+                  return alert('Driver already rejected');
+                }
+                const response = await supabase.from('DriverDetails').update(
+                  {
+                    isVerified: false,
+                    rejectionReason: rejectReason,
+                  }
+                ).eq('id', id);
+                console.log(response);
+                if (response.status === 204) {
+                  alert('Driver Rejected');
+                } else {
+                  alert('Error Rejecting Driver');
+                }
+                setLoading(true);
+                getData();
+              }}>Reject</button>
+            </div>
+          )
+        }
       </div>
     </div>
   );

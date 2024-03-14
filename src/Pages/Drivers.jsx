@@ -62,7 +62,7 @@ const Drivers = () => {
                 <a
                   key={driver.id}
                   onClick={() => {
-                    navigate("/application/" + driver.id);
+                    navigate("/application/" + driver.driverId);
                   }}
                 >
                   <DriverBox driver={driver} />

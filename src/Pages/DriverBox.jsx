@@ -7,15 +7,16 @@ const DriverBox = ({ driver }) => {
   return (
     <div className="driverBox">
       <div className="driverBox-left">
-        <h1>{driver.firstName + driver.lastName}</h1>
+        <h1>{driver.firstName} {driver.lastName}</h1>
         <p>{driver.email}</p>
+        <br />
         {driver.isVerified ? (
           <div className="approved">
             <p>Approved</p>
           </div>
         ) : (
           <div className="progress">
-            <p>Progress</p>
+            <p>In Review</p>
           </div>
         )}
       </div>

@@ -10,6 +10,7 @@
   border: 1px solid #d69f29;
   cursor: pointer;
   transition: 0.3s ease;
+  padding: 10px;
 }
 
 .driverBox:hover {
@@ -25,6 +26,18 @@
 
 .driverBox-right>img {
   width: 100%;
+}
+
+.approved {
+  color: green;
+  padding: 5px;
+  background-color: #d69f29;
+  border-radius: 5px;
+  text-align: center;
+}
+
+.progress {
+  color: red;
 }
 
 @media only screen and (max-width: 1025px) {
