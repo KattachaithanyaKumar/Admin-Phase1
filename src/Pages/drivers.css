@@ -6,6 +6,28 @@
   margin-right: 30px;
 }
 
+.driverRow {
+  display: flex;
+  justify-content: space-between;
+}
+
+.csvButton {
+  padding: 10px 20px;
+  background-color: #D69F29;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: 0.3s;
+  height: 50px;
+  margin-right: 40px;
+}
+
+.csvButton:hover {
+  background-color: #DBDF00;
+  color: black;
+}
+
 @media only screen and (max-width: 768px) {
   .applications {
     grid-template-columns: 1fr;

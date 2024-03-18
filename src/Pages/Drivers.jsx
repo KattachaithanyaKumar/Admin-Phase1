@@ -44,14 +44,48 @@ const Drivers = () => {
   const init = useEffect(() => {
     fetchDrivers();
   }, []);
+  async function downloadTableAsCSV() {
+    const { data, error } = await supabase.from('DriverDetails').select('*');
+
+    if (error) {
+      console.error('Failed to fetch data:', error.message);
+      return;
+    }
+
+    // Extract column names
+    const columns = Object.keys(data[0]);
+
+    // Convert data to CSV format
+    let csvContent = "data:text/csv;charset=utf-8," + columns.join(",") + "\n";
+    csvContent += data.map(row => columns.map(col => row[col]).join(",")).join("\n");
+
+    // Create a link element to trigger the download
+    const link = document.createElement('a');
+    link.setAttribute('href', encodeURI(csvContent));
+    link.setAttribute('download', 'DriverDetails.csv');
+    document.body.appendChild(link);
+
+    // Trigger the download
+    link.click();
+  }
+
+
 
   return (
     <div>
       <Sidebar option3 />
       <Nav />
       <div className="page">
-        <h1>Drivers</h1>
-        <p>driver applications</p>
+
+        <div className="driverRow">
+          <div>
+            <h1>Drivers</h1>
+            <p>driver applications</p>
+          </div>
+          <button className="csvButton" onClick={async () => {
+            await downloadTableAsCSV()
+          }}>Export To CSV File</button>
+        </div>
 
         <div>
           {loading ? (
