@@ -1,0 +1,38 @@
+.cusQuotesPage {
+    /* background-color: red; */
+    margin-left: 10%;
+    margin-top: 5%;
+}
+
+.customerQuote {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    width: 80%;
+    background-color: #D3D3D3;
+    border-radius: 10px;
+    padding: 10px;
+    margin: 20px;
+}
+
+.customerQuote h3 {
+    color: #333;
+    font-size: 1rem;
+    font-weight: 500;
+}
+
+@media only screen and (max-width: 1025px) {
+    .cusQuotesPage {
+        margin-left: 15%;
+    }
+}
+
+@media only screen and (max-width: 768px) {
+    .cusQuotesPage {
+        margin-left: 0;
+        margin-top: 0;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+}

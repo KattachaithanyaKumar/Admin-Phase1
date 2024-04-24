@@ -1,7 +1,7 @@
 import React from "react";
 import "./sidebar.css";
 
-import { LuHome } from "react-icons/lu";
+import { LuHome, LuPersonStanding } from "react-icons/lu";
 import { LuPackage } from "react-icons/lu";
 import { LuCar } from "react-icons/lu";
 import { LuBadgeDollarSign } from "react-icons/lu";
@@ -13,6 +13,7 @@ const Sidebar = (props) => {
   const option2 = props.option2 || false;
   const option3 = props.option3 || false;
   const option4 = props.option4 || false;
+  const option5 = props.option5 || false;
 
   const navigate = useNavigate();
 
@@ -40,6 +41,12 @@ const Sidebar = (props) => {
         color={option4 ? "D69F29" : "fff"}
         onClick={() => {
           navigate("/earnings");
+        }}
+      />
+      <LuPersonStanding
+        color={option5 ? "D69F29" : "fff"}
+        onClick={() => {
+          navigate("/customer-instant-quote");
         }}
       />
     </div>

@@ -8,6 +8,7 @@ import Application from "./Pages/Application";
 import Package from "./Pages/Package";
 import Drivers from "./Pages/Drivers";
 import Earnings from "./Pages/Earnings";
+import CustomerInstantQuote from "./Pages/CustomerInstantQuote";
 
 const App = () => {
   return (
@@ -19,6 +20,7 @@ const App = () => {
         <Route path="/drivers" element={<Drivers />} />
         <Route path="/earnings" element={<Earnings />} />
         <Route path="/application/:id" element={<Application />} />
+        <Route path="/customer-instant-quote" element={<CustomerInstantQuote />} />
       </Routes>
     </BrowserRouter>
   );
